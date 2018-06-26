@@ -1,7 +1,5 @@
 env:
   global:
-    - USER=rkhozinov
-    - REPO=alpine-strongswan
     - TRAVIS_ALLOW_FAILURE=false
 
 sudo: required
