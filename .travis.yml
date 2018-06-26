@@ -1,0 +1,19 @@
+env:
+  global:
+    - USER=rkhozinov
+    - REPO=alpine-strongswan
+    - TRAVIS_ALLOW_FAILURE=false
+
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t "${TRAVIS_REPO_SLUG}:0.0.${TRAVIS_JOB_NUMBER}" .
+
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    branch: master
