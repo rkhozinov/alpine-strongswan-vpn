@@ -1,7 +1,5 @@
 env:
   global:
-    - USER=rkhozinov
-    - REPO=alpine-strongswan
     - TRAVIS_ALLOW_FAILURE=false
 
 sudo: required
@@ -9,7 +7,7 @@ sudo: required
 services:
   - docker
 
-before_install:
+script:
   - docker build -t "${TRAVIS_REPO_SLUG}:0.0.${TRAVIS_JOB_NUMBER}" .
 
 deploy:
