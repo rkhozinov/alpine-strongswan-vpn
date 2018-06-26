@@ -5,11 +5,11 @@
 FROM alpine:edge
 
 ENV STRONGSWAN_RELEASE https://download.strongswan.org/strongswan.tar.bz2
+ENV CFLAGS "-g -O3 -Wall -Wno-format -Wno-format-security -Wno-pointer-sign"
 
 RUN apk --update add build-base \
             ca-certificates \
             curl \
-            curl-dev \
             ip6tables \
             iproute2 \
             iptables-dev \
@@ -26,13 +26,11 @@ RUN apk --update add build-base \
             --enable-aesni \
             --enable-chapoly \
             --enable-cmd \
-            --enable-curl \
             --enable-dhcp \
             --enable-eap-dynamic \
             --enable-eap-identity \
             --enable-eap-md5 \
             --enable-eap-mschapv2 \
-            --enable-eap-radius \
             --enable-eap-tls \
             --enable-farp \
             --enable-files \
@@ -43,6 +41,7 @@ RUN apk --update add build-base \
             --enable-openssl \
             --enable-sha3 \
             --enable-shared \
+            --enable-ikev2 \
             --disable-aes \
             --disable-des \
             --disable-gmp \
@@ -56,7 +55,7 @@ RUN apk --update add build-base \
     make && \
     make install && \
     rm -rf /tmp/* && \
-    apk del build-base curl-dev openssl-dev && \
+    apk del build-base curl openssl-dev && \
     rm -rf /var/cache/apk/*
 
 EXPOSE 500/udp \
