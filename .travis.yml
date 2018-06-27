@@ -13,14 +13,10 @@ services:
   - docker
 
 script:
-  - echo $TRAVIS_TAG
-  - echo $TRAVIS_JOB_ID
-  - echo $TRAVIS_BUILD_ID
-  - echo $TRAVIS_BUILD_NUMBER
-  # Set up git user name and tag this commit
-  - git config --local user.name "rkhozinov"
+  - git config --local user.name "Ruslan Khozinov"
   - git config --local user.email "ruslan.khozinov@gmail.com"
   - git tag ${VERSION} 
+  - docker build -t "${TRAVIS_REPO_SLUG}:${VERSION}" .
 
 deploy:
   provider: releases
@@ -32,3 +28,6 @@ deploy:
     all_branches: true
     branch: "*"
     tags: false
+deploy:
+  provider: script
+  script: bash docker_push
