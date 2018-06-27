@@ -5,7 +5,7 @@ git:
 env:
   global:
     - TRAVIS_ALLOW_FAILURE=false
-    - VERSION="0.0.${TRAVIS_JOB_NUMBER}"
+    - VERSION="0.0.${TRAVIS_BUILD_NUMBER}"
 
 sudo: required
 
@@ -17,14 +17,10 @@ script:
   - echo $TRAVIS_JOB_ID
   - echo $TRAVIS_BUILD_ID
   - echo $TRAVIS_BUILD_NUMBER
-  - tar cvzf "${VERSION}.tgz" ./*
-  - zip ${VERSION}.zip ./* -x "${VERSION}.tgz"
   # Set up git user name and tag this commit
   - git config --local user.name "rkhozinov"
   - git config --local user.email "ruslan.khozinov@gmail.com"
-  - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
   - git tag ${VERSION} 
-  - git log --oneline 
 
 deploy:
   provider: releases
