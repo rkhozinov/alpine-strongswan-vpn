@@ -30,9 +30,6 @@ deploy:
   provider: releases
   api_key:
     secure: xSh4PVBkNO34fA/RSv3txT87Wl1UmXoVgNgOSzRC3UdNKKgwP9YO5RLtqf1BGp51/KnVxvd5dCpYUeHe4D+uko5QH9WHcxE4A60XQ+7iOEyDLjoqvT3LBy5J4vKJ99J0Lgr+gLpMubm7Dk3t6IInXVhPUDrHqOU5tOE5k34xfDrmRsJCVvfHvDKU/YXN77qjF5LOTYJF+ucyiFEub9t2/xvg3wiubyWWTqNOna5e+vvPnpY5O5JUFiVy+B2RuCc8sWVswGVJ6xhx6Rb1KjfkE3f6k8B2QG0HIYsbl8rIw8q3vReGAvTTkr0WBSMOQBbRqaLvif5B6RegS2hB3efUNOQm7P18G/Plk8mZ2248hQdIyCMebCHOHuFhbxxuDQQ1rHJkyKpSwC+p2fhvUA2734V9+ccpEpgKJqxstYj6ZZq/qAKjPUda3Zxyl6q6xwHb8qa9EfCRdnRW0778aVSwP9lGHSsbJYhcaL8z5StXE2rmxqs/lW0xRfE7GF1zo4dJHWZIr+4UI1c+J9933VMMJ/l+5HVYwFxrnWwkVLUDQocxeYPhLlwaC3ltzuw9bbBxbyNJzsuoiQKhVtZxeP1pBBbmCoSRy3LTV6wSggAaAGthfMfnHynV4zlALRzcwF7cWRf86ylYOSQkJweIITEMmbVcyC2VuJlV45BAhJ1Ws8Y=
-  file: 
-    - "${VERSION}.tgz"
-    - "${VERSION}.zip"
   skip_cleanup: true
   on:
     repo: ${TRAVIS_REPO_SLUG}
