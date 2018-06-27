@@ -19,7 +19,10 @@ RUN apk --update add build-base \
     curl -Lo /tmp/strongswan.tar.bz2 $STRONGSWAN_RELEASE && \
     tar --strip-components=1 -C /tmp/strongswan -xjf /tmp/strongswan.tar.bz2 && \
     cd /tmp/strongswan && \
-    ./configure --prefix=/usr \
+    ./configure \
+            --silent \
+	    --enable-silent-rules \
+            --prefix=/usr \
             --sysconfdir=/etc \
             --libexecdir=/usr/lib \
             --with-ipsecdir=/usr/lib/strongswan \
