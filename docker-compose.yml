@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  vpn:
+    image: rkhozinov/alpine-strongswan:0.0.1
+    restart: always
+    ports:
+      - "500:500/udp"
+      - "4500:4500/udp"
+    privileged: true
+    hostname: alpine-strongswan
+    container_name: alpine-strongswan
+    cap_add:
+      - NET_ADMIN
+    network_mode: host
+    volumes:
+      - /lib/modules:/lib/modules:ro
+      - ./config/strongswan.conf:/etc/strongswan.conf
+      - ./config/ipsec.conf:/etc/ipsec.conf
+      - ./config/ipsec.secrets:/etc/ipsec.secrets
+      - ./config/ipsec.d:/etc/ipsec.d/
